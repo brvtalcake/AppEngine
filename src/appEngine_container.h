@@ -9,52 +9,52 @@
 
 /*------------------ types -------------------*/ 
 
-typedef enum appEngine_objectType
+typedef enum AppEngine_ObjectType
 {
 	text,
 	figure,
 	container
 	// ... add the objects that can be in a container
-}AE_objectType;
+}AE_ObjectType;
 
 
 
 // constraints measurements are relative to the container containing the object
-typedef struct appEngine_constraintsOnSize 
+typedef struct AppEngine_ConstraintsOnSize 
 {
-	AE_measurementMethod type;
-	AE_measurements height;
-	AE_measurements width;
-}AE_constraintsOnSize;
+	AE_MeasurementMethod type;
+	AE_Measurements height;
+	AE_Measurements width;
+}AE_ConstraintsOnSize;
 
-typedef struct appEngine_constraintsOnPosition 
+typedef struct AppEngine_ConstraintsOnPosition 
 {
-	AE_measurementMethod type;
-	AE_measurements marginLeft; // marginLeft is calculated from the leftmost point of the considered object
-	AE_measurements marginRight; // ... from the rightmost point ...
-	AE_measurements marginTop; // ...
-	AE_measurements marginBot; // ...
-}AE_constraintsOnPosition;
+	AE_MeasurementMethod type;
+	AE_Measurements marginLeft; // marginLeft is calculated from the leftmost point of the considered object
+	AE_Measurements marginRight; // ... from the rightmost point ...
+	AE_Measurements marginTop; // ...
+	AE_Measurements marginBot; // ...
+}AE_ConstraintsOnPosition;
 
-typedef struct appEngine_constraints 
+typedef struct AppEngine_Constraints 
 {
-	AE_constraintsOnPosition position;
-	AE_constraintsOnSize size;
-}AE_constraints;
+	AE_ConstraintsOnPosition position;
+	AE_ConstraintsOnSize size;
+}AE_Constraints;
 
-typedef struct appEngine_containerElement 
+typedef struct AppEngine_ContainerElement 
 {
 	void *elementContent;
-	AE_objectType elementType;
-	AE_container *parent;
-	AE_constraints elementConstraints;
-	AE_figure elementBorders;
-}AE_containerElement;
+	AE_ObjectType elementType;
+	AE_Container *parent;
+	AE_Constraints elementConstraints;
+	AE_Figure *elementBorders;
+}AE_ContainerElement;
 
-typedef struct appEngine_container 
+typedef struct AppEngine_Container 
 {
-	AE_containerElement **elements;
-}AE_container;
+	AE_ContainerElement **elements;
+}AE_Container;
 
 
 #endif

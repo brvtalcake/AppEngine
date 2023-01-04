@@ -9,17 +9,17 @@
 
 /*------------------ types -------------------*/ 
 
-typedef union appEngine_measurements 
+typedef union AppEngine_Measurements 
 {
 	float relative;
 	int absolute;
-}AE_measurements;
+}AE_Measurements;
 
-typedef enum appEngine_measurementMethod 
+typedef enum AppEngine_MeasurementMethod 
 {
 	relative,
 	absolute
-}AE_measurementMethod;
+}AE_MeasurementMethod;
 
 
 #endif

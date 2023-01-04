@@ -6,48 +6,54 @@
 #ifndef APPENGINE_MAINMANAGEMENT_H
 #define APPENGINE_MAINMANAGEMENT_H 
 
+#include <stdbool.h>
+#include "appEngine_util.h"
+
+/*----------------- macros -------------------*/
+#define AE_BASE_RESSOURCE_TYPES() \
+	AE_Activity, 				  \
+	AE_Container,				  \
+	AE_ContainerElement,		  \
+	AE_Figure,					  \
+	//add something here 		  \
+	SDL_Window, 				  \
+	SDL_Renderer, 				  \
+	TTF_Font,                     \
+	SDL_Surface,                  \
+	SDL_Texture, 	
+
 
 /*------------------ types -------------------*/
 
 // error management
-typedef enum appEngine_activeRessourceType 
-{
-	// related to AE
-	activityContent,
-	container,
+DEFINE_ENUM_WITH_TOKENS(AE_ActiveRessourceType, AE_BASE_RESSOURCE_TYPES());
+DEFINE_TYPEDEF(enum AE_ActiveRessourceType, AE_ActiveRessourceType);
 
-	// related to SDL
-	window,
-	renderer,
-	font,
-	surface,
-	texture
-}AE_activeRessourceType;
-
-typedef struct appEngine_activeRessource 
+typedef struct AppEngine_ActiveRessource 
 {
-	void *content;
-	AE_activeRessourceType type;
-	struct appEngine_activeRessources *nextElement;
-}AE_activeRessource;
+	void *this;
+	AE_ActiveRessourceType type;
+	struct AppEngine_ActiveRessources *nextElement;
+}AE_ActiveRessource;
 
-typedef struct appEngine_activeRessourcesList 
+typedef struct AppEngine_ActiveRessourcesList 
 {
-	AE_activeRessource *firstElement;
-}AE_activeRessourcesList;
+	AE_ActiveRessource *firstElement;
+}AE_ActiveRessourcesList;
 
 
 /*------------------ global variables -------------------*/
 
-extern bool AE_programLaunched;
+extern bool AE_ProgramLaunched;
 
 
 /*------------------ functions -------------------*/
 
+int AE_DeclareActiveRessource(void *ptRessource, AE_ActiveRessourceType ressourceType);
 /* 
-	The function below will quit SDL safely by dealocating ressources to avoid memory leaks
+	The function below will quit the SDL program safely by dealocating ressources to avoid memory leaks
 */
-void AE_ExitWithError(char *message, AE_activeRessourcesList *list);
+void AE_ExitWithError(char *message, AE_ActiveRessourcesList *list);
 
 
 

@@ -9,13 +9,13 @@
 
 /*------------------ types -------------------*/ 
 
-typedef struct appEngine_activity 
+typedef struct AppEngine_Activity 
 {
 	char *name;
 	SDL_Window *activityMainWindow;
 	SDL_Renderer *activityMainRenderer;
-	AE_container *activityMainContainer;
-}AE_activity;
+	AE_Container *activityMainContainer;
+}AE_Activity;
 
 
 

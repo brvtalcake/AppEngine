@@ -1,5 +1,7 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/brvtalcake/appengine/badge)](https://www.codefactor.io/repository/github/brvtalcake/appengine)
+
 # AppEngine
 AppEngine is (/ will be) a C library that will allow you to build a SDL-based GUI in a more simple way than with only basic SDL functions
 
-## How to use AppEngine
-We're working hard to finish the development of AppEngine. Stay tuned !
+## Current state of the project
+I'm not focused on it at the moment.
